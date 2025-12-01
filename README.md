@@ -141,14 +141,16 @@ This insight directly informs:
 •	Shot profile optimization
 •	Player evaluation & fit
 ________________________________________
-🗂️ Repository Structure
+## 🗂️ Repository structure
+
+To keep the published README tidy and readable on GitHub, use a monospace "tree" block for the top-level layout and short inline comments for clarity.
+
+```
 nba-pace-analytics/
-│
 ├── notebooks/                  # Jupyter notebooks for analysis
 │   ├── 01_get_data.ipynb       # Data acquisition & preprocessing
 │   ├── 02_analysis.ipynb       # Metrics, stats & visualization
 │   └── 03_extra_code.ipynb     # Scratchpad; migrate stable code to scripts/
-│
 ├── data/                       # Project datasets
 │   ├── raw/                    # Raw NBA API outputs (CSV)
 │   │   ├── team_game_logs_2023-24.csv
@@ -157,14 +159,14 @@ nba-pace-analytics/
 │   └── processed/              # Cleaned & structured datasets
 │       ├── team_game_logs_with_metrics_2024_2026.csv
 │       └── team_season_outcomes_2024_2026.csv
-│
-├── scripts/                    # Reusable utilities (move code here from 03_extra_code)
+├── scripts/                    # Reusable utilities (move stable code here)
 ├── images/                     # Exported charts
 ├── env/                        # Python virtual environment (Windows PowerShell)
 ├── requirements.txt            # Python dependencies
 ├── STYLE_GUIDE.md              # Code style & best practices
 ├── NOTEBOOK_STRUCTURE.md       # Recommended notebook organization
 └── README.md
+```
 ________________________________________
 🚀 Future Enhancements
 •	Defensive efficiency integration
