@@ -110,10 +110,16 @@ ________________________________________
 📈 Visuals
 
 Pace Change vs Offensive Rating Change (YoY)
-![Scatter plot of pace delta vs offensive rating delta](images/pace_vs_ortg_delta.png)
+![Scatter plot of pace delta vs offensive rating delta]<img width="989" height="590" alt="image" src="https://github.com/user-attachments/assets/e92a123d-ad69-4300-9906-27f4f67b4cd5" />
+
 
 Efficiency Change by Pace Bucket
-![Bar chart of efficiency deltas by pace bucket](images/pace_bucket_efficiency.png)
+![Bar chart of efficiency deltas by pace bucket]<img width="889" height="590" alt="image" src="https://github.com/user-attachments/assets/84be0d0c-d441-431c-a841-66a6e92e4db0" />
+
+Efficiency Change vs. Win % Change (YoY)
+![Scatter plot of change in Offensive Rating vs Win Percentage Delta]<img width="889" height="590" alt="image" src="https://github.com/user-attachments/assets/a43d931a-29a3-4656-8f3e-06e82a1d1de2" />
+
+
 
 ________________________________________
 🔍 Outlier Robustness Check
