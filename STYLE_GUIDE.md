@@ -9,17 +9,32 @@ nba-pace-analytics/
 ├── README.md                      # Project overview
 ├── requirements.txt               # Dependencies
 ├── LICENSE                        # MIT or Apache 2.0
-├── PUBLICATION_GUIDE.md          # This guide
-├── NOTEBOOK_STRUCTURE.md         # Detailed organization
+├── PUBLICATION_GUIDE.md           # Publishing workflow and tips
+├── NOTEBOOK_STRUCTURE.md          # Detailed notebook organization
 ├── notebooks/
-│   └── 01_get_data.ipynb        # Main analysis
-├── data/                         # Raw/processed data
-└── scripts/                      # Optional utility scripts
+│   ├── 01_get_data.ipynb          # Data acquisition + preprocessing
+│   ├── 02_analysis.ipynb          # Main analysis, metrics, visuals
+│   └── 03_extra_code.ipynb        # Scratchpad; move outputs to scripts before publish
+├── data/                          # Raw/processed data
+│   ├── raw/
+│   │   ├── team_game_logs_2023-24.csv
+│   │   ├── team_game_logs_2024-25.csv
+│   │   └── team_game_logs_2025-26.csv
+│   └── processed/
+│       ├── team_game_logs_with_metrics_2024_2026.csv
+│       └── team_season_outcomes_2024_2026.csv
+├── env/                           # Python virtual environment (Windows PowerShell)
+└── scripts/                       # Reusable utilities; keep notebook code minimal
 ```
 
 ---
 
 ## Notebook Cell Organization
+
+### Notebook Roles
+- `01_get_data.ipynb`: Fetch, validate, and persist raw/processed data.
+- `02_analysis.ipynb`: Exploratory analysis, feature engineering, and plots.
+- `03_extra_code.ipynb`: Temporary experiments; convert to `scripts/` or merge into the main notebooks before publishing. See `NOTEBOOK_STRUCTURE.md` for details.
 
 ### Header Cell
 ```markdown
@@ -159,6 +174,13 @@ from nba_api.stats.endpoints import leaguegamelog, LeagueDashTeamStats
 
 ---
 
+## Environment & Paths
+
+- Use the workspace venv: activate with PowerShell: `& env\Scripts\Activate.ps1`.
+- Install dependencies from `requirements.txt`: `pip install -r requirements.txt`.
+- Prefer `pathlib.Path` and project-relative paths (e.g., `Path("data/raw")`) over absolute paths.
+- Write outputs to `data/processed/` with descriptive, versioned filenames (e.g., `*_2024_2026.csv`).
+
 ## Function Examples
 
 ### Metric Calculation
@@ -211,6 +233,8 @@ def validate_game_logs(df):
 - [ ] 1 blank line between logical sections
 - [ ] Remove commented-out code before publishing
 - [ ] All cells run top-to-bottom without errors
+- [ ] No absolute file paths; use `pathlib.Path` and relative paths
+- [ ] Outputs saved under `data/processed/` with clear, season-encoded names
 
 ---
 
@@ -253,20 +277,20 @@ Before publishing, run your notebook top-to-bottom:
 
 ## Final Review
 
-Before pushing to GitHub:
+Before pushing to GitHub (Windows PowerShell):
 
-```bash
-# Check for .ipynb_checkpoints
-find . -name ".ipynb_checkpoints" -type d
+```powershell
+# Check for .ipynb_checkpoints directories
+Get-ChildItem -Path . -Directory -Filter ".ipynb_checkpoints" -Recurse
 
 # Verify all files are tracked
 git status
 
-# Review changes
+# Review staged changes
 git diff --cached
 
-# Commit with clear message
-git commit -m "Add pace analytics notebook and documentation"
+# Commit with a clear message
+git commit -m "Update notebooks and documentation for pace analytics"
 ```
 
 ---
