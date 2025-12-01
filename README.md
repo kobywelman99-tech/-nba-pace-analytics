@@ -141,30 +141,37 @@ This insight directly informs:
 •	Shot profile optimization
 •	Player evaluation & fit
 ________________________________________
-🗂️ Repository Structure
+## 🗂️ Repository structure
+
+To keep the published README tidy and readable on GitHub, use a monospace "tree" block for the top-level layout and short inline comments for clarity.
+
+```
 nba-pace-analytics/
-│
 ├── notebooks/                  # Jupyter notebooks for analysis
-│   ├── 01_get_data.ipynb       # Data acquisition & preprocessing
-│   ├── 02_analysis.ipynb       # Metrics, stats & visualization
+│   ├── 01_get_data.ipynb       # Data acquisition &amp; preprocessing
+│   ├── 02_analysis.ipynb       # Metrics, stats &amp; visualization
 │   └── 03_extra_code.ipynb     # Scratchpad; migrate stable code to scripts/
-│
 ├── data/                       # Project datasets
 │   ├── raw/                    # Raw NBA API outputs (CSV)
 │   │   ├── team_game_logs_2023-24.csv
 │   │   ├── team_game_logs_2024-25.csv
 │   │   └── team_game_logs_2025-26.csv
-│   └── processed/              # Cleaned & structured datasets
+│   └── processed/              # Cleaned &amp; structured datasets
 │       ├── team_game_logs_with_metrics_2024_2026.csv
 │       └── team_season_outcomes_2024_2026.csv
-│
-├── scripts/                    # Reusable utilities (move code here from 03_extra_code)
+├── scripts/                    # Reusable utilities (move stable code here)
 ├── images/                     # Exported charts
 ├── env/                        # Python virtual environment (Windows PowerShell)
 ├── requirements.txt            # Python dependencies
-├── STYLE_GUIDE.md              # Code style & best practices
+├── STYLE_GUIDE.md              # Code style &amp; best practices
 ├── NOTEBOOK_STRUCTURE.md       # Recommended notebook organization
 └── README.md
+```
+
+Tips:
+- Keep the tree block compact and use short inline comments (after "#") rather than long sentences.
+- For multi-line explanations, add a short paragraph below the tree (not inside the code block) so the tree remains easy to scan.
+- If you want clickable links to key files, add a short section under the tree with Markdown links (e.g., [01_get_data.ipynb](notebooks/01_get_data.ipynb)).
 ________________________________________
 🚀 Future Enhancements
 •	Defensive efficiency integration
