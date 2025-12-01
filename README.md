@@ -107,6 +107,15 @@ Bucket analysis by pace change showed:
 •	Slowest 25% of teams → Largest gains in ORtg & TS%
 ✅ Suggests many teams are prioritizing half-court shot quality and execution over raw tempo.
 ________________________________________
+📈 Visuals
+
+Pace Change vs Offensive Rating Change (YoY)
+![Scatter plot of pace delta vs offensive rating delta](images/pace_vs_ortg_delta.png)
+
+Efficiency Change by Pace Bucket
+![Bar chart of efficiency deltas by pace bucket](images/pace_bucket_efficiency.png)
+
+________________________________________
 🔍 Outlier Robustness Check
 As a sensitivity test, three extreme pace-change outliers (PHX, DAL, IND) were removed.
 Results:
@@ -129,19 +138,26 @@ ________________________________________
 🗂️ Repository Structure
 nba-pace-analytics/
 │
-├── notebooks/              # Jupyter notebooks for analysis
-│   ├── 01_get_data.ipynb   # Data pipeline & feature engineering
-│   └── 02_analysis.ipynb   # Full analytics, stats & visualization
+├── notebooks/                  # Jupyter notebooks for analysis
+│   ├── 01_get_data.ipynb       # Data acquisition & preprocessing
+│   ├── 02_analysis.ipynb       # Metrics, stats & visualization
+│   └── 03_extra_code.ipynb     # Scratchpad; migrate stable code to scripts/
 │
-├── data/
-│   ├── raw/                # Raw NBA API outputs
-│   └── processed/         # Cleaned & structured datasets
+├── data/                       # Project datasets
+│   ├── raw/                    # Raw NBA API outputs (CSV)
+│   │   ├── team_game_logs_2023-24.csv
+│   │   ├── team_game_logs_2024-25.csv
+│   │   └── team_game_logs_2025-26.csv
+│   └── processed/              # Cleaned & structured datasets
+│       ├── team_game_logs_with_metrics_2024_2026.csv
+│       └── team_season_outcomes_2024_2026.csv
 │
-├── images/                 # Exported charts
-│
-├── requirements.txt        # Python dependencies
-├── NOTEBOOK_STRUCTURE.md  # Recommended notebook organization
-├── PUBLICATION_GUIDE.md   # Code quality & publishing standards
+├── scripts/                    # Reusable utilities (move code here from 03_extra_code)
+├── images/                     # Exported charts
+├── env/                        # Python virtual environment (Windows PowerShell)
+├── requirements.txt            # Python dependencies
+├── STYLE_GUIDE.md              # Code style & best practices
+├── NOTEBOOK_STRUCTURE.md       # Recommended notebook organization
 └── README.md
 ________________________________________
 🚀 Future Enhancements
@@ -154,8 +170,21 @@ ________________________________________
 🤝 Contributing
 Pull requests and suggestions are welcome!
 Please follow the code style and organization guidelines in:
-•	PUBLICATION_GUIDE.md
-•	NOTEBOOK_STRUCTURE.md
+• STYLE_GUIDE.md
+• NOTEBOOK_STRUCTURE.md
+
+⚙️ Setup (Windows PowerShell)
+```
+# Activate the virtual environment
+& env\Scripts\Activate.ps1
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
+📁 Paths & Persistence
+- Use `pathlib.Path` and project-relative directories (avoid absolute Windows paths).
+- Read from `data/raw/` when available; write processed outputs to `data/processed/` with season-encoded filenames.
 ________________________________________
 👤 Author
 Jakob Welman
